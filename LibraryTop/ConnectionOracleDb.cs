@@ -23,7 +23,7 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Beginner transaction, open connection and execute a delete in data base.
+        /// Execute a delete in data base.
         /// </summary>
         /// <param name="query">Query will be execute.</param>
         /// <returns>Return the number rows affecteds.</returns>
@@ -57,7 +57,7 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Beginner transaction, open connection and execute a insert in data base.
+        /// Execute a insert in data base.
         /// </summary>
         /// <param name="query">Query will be execute.</param>
         /// <returns>Return the number rows affecteds.</returns>
@@ -93,7 +93,7 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Beginner transaction, open connection and execute a select in data base.
+        /// Execute a select in data base.
         /// </summary>
         /// <param name="query">Query will be execute.</param>
         /// <returns>Return a datatable.</returns>
@@ -126,7 +126,7 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Beginner transaction, open connection and execute a update in data base.
+        /// Execute a update in data base.
         /// </summary>
         /// <param name="query">Query will be execute.</param>
         /// <returns>Return the number rows affecteds.</returns>
