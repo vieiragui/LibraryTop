@@ -1,0 +1,10 @@
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\LibraryTop.xml
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\LibraryTop.dll
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\LibraryTop.pdb
+C:\Projetos\LibraryTop\LibraryTop\obj\Debug\LibraryTop.csprojAssemblyReference.cache
+C:\Projetos\LibraryTop\LibraryTop\obj\Debug\LibraryTop.csproj.CoreCompileInputs.cache
+C:\Projetos\LibraryTop\LibraryTop\obj\Debug\LibraryTop.csproj.CopyComplete
+C:\Projetos\LibraryTop\LibraryTop\obj\Debug\LibraryTop.dll
+C:\Projetos\LibraryTop\LibraryTop\obj\Debug\LibraryTop.pdb
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\LibraryTop.dll.config
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\Oracle.ManagedDataAccess.dll

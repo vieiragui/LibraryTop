@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LibraryTop</name>
+    </assembly>
+    <members>
+        <member name="T:LibraryTop.ConnectionOracleDb">
+            <summary>
+            Connect and execute operations with database Oracle.
+            </summary>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.#ctor(System.String)">
+            <summary>
+            Constructor. Receive with argument the connection string.
+            </summary>
+            <param name="connectionString">Connection string Oracle. </param>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.Delete(System.String)">
+            <summary>
+            Beginner transaction, open connection and execute a delete in data base.
+            </summary>
+            <param name="query">Query will be execute.</param>
+            <returns>Return the number rows affecteds.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.Insert(System.String)">
+            <summary>
+            Beginner transaction, open connection and execute a insert in data base.
+            </summary>
+            <param name="query">Query will be execute.</param>
+            <returns>Return the number rows affecteds.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.Select(System.String)">
+            <summary>
+            Beginner transaction, open connection and execute a select in data base.
+            </summary>
+            <param name="query">Query will be execute.</param>
+            <returns>Return a datatable.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.Update(System.String)">
+            <summary>
+            Beginner transaction, open connection and execute a update in data base.
+            </summary>
+            <param name="query">Query will be execute.</param>
+            <returns>Return the number rows affecteds.</returns>
+        </member>
+    </members>
+</doc>
