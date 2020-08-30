@@ -43,10 +43,12 @@ namespace LibraryTop
                 }
                 catch (InvalidOperationException ex)
                 {
+                    command.Transaction.Rollback();
                     return $"Error when deleting data. Message: {ex.Message}";
                 }
                 catch (Exception ex)
                 {
+                    command.Transaction.Rollback();
                     return $"Error when deleting data. Message: {ex.Message}";
                 }
                 finally

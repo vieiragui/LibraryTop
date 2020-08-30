@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Data;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 namespace LibraryTop
 {
     /// <summary>
-    /// Connect and execute operations with database MySql.
+    /// Connect and execute operations with database SqlServer.
     /// </summary>
-    public class ConnectionMySqlDb : IDataBase
+    class ConnectionSqlServerDb : IDataBase
     {
-        private string _connectionString = default;
-        private MySqlConnection connection;
-        private MySqlCommand command;
-        private MySqlTransaction transaction;
+        private string _connectionString;
+        private SqlConnection connection;
+        private SqlCommand command;
+        private SqlTransaction transaction;
 
         /// <summary>
         /// Constructor. Receive with argument the connection string.
         /// </summary>
-        /// <param name="connectionString">Connection string MySql.</param>
-        public ConnectionMySqlDb(string connectionString)
+        /// <param name="connectionString">Connection string SqlServer. </param>
+        public ConnectionSqlServerDb(string connectionString)
         {
             _connectionString = connectionString;
         }
@@ -30,8 +30,8 @@ namespace LibraryTop
         /// <returns>Return the number rows affecteds.</returns>
         public string Delete(string query)
         {
-            using (connection = new MySqlConnection(_connectionString))
-            using (command = new MySqlCommand(query, connection))
+            using (connection = new SqlConnection(_connectionString))
+            using (command = new SqlCommand(query, connection))
             {
                 try
                 {
@@ -42,10 +42,20 @@ namespace LibraryTop
 
                     return numberRowsAffecteds.ToString();
                 }
-                catch (Exception ex)
+                catch (InvalidCastException ex)
                 {
                     transaction.Rollback();
-                    return $"Error when deleting data. Message:{ex.Message}";
+                    return $"Error when delete data. Message: {ex.Message}";
+                }
+                catch (SqlException ex)
+                {
+                    transaction.Rollback();
+                    return $"Error when delete data. Message: {ex.Message}";
+                }
+                catch (InvalidOperationException ex)
+                {
+                    transaction.Rollback();
+                    return $"Error when delete data. Message: {ex.Message}";
                 }
                 finally
                 {
@@ -61,8 +71,8 @@ namespace LibraryTop
         /// <returns>Return the number rows affecteds.</returns>
         public string Insert(string query)
         {
-            using (connection = new MySqlConnection(_connectionString))
-            using (command = new MySqlCommand(query, connection))
+            using (connection = new SqlConnection(_connectionString))
+            using (command = new SqlCommand(query, connection))
             {
                 try
                 {
@@ -73,10 +83,20 @@ namespace LibraryTop
 
                     return numberRowsAffecteds.ToString();
                 }
-                catch (Exception ex)
+                catch (InvalidCastException ex)
                 {
                     transaction.Rollback();
-                    return $"Error when insert data. Message:{ex.Message}";
+                    return $"Error when insert data. Message: {ex.Message}";
+                }
+                catch (SqlException ex)
+                {
+                    transaction.Rollback();
+                    return $"Error when insert data. Message: {ex.Message}";
+                }
+                catch (InvalidOperationException ex)
+                {
+                    transaction.Rollback();
+                    return $"Error when insert data. Message: {ex.Message}";
                 }
                 finally
                 {
@@ -92,21 +112,28 @@ namespace LibraryTop
         /// <returns>Return a datatable.</returns>
         public DataTable Select(string query)
         {
-            DataTable resultQuery = new DataTable();
-            using (connection = new MySqlConnection(_connectionString))
-            using (command = new MySqlCommand(query, connection))
+            DataTable table = new DataTable();
+
+            using (connection = new SqlConnection(_connectionString))
+            using (command = new SqlCommand(query, connection))
             {
                 try
                 {
                     connection.Open();
-                    connection.BeginTransaction();
-                    resultQuery.Load(command.ExecuteReader());
+                    transaction = connection.BeginTransaction();
+                    table.Load(command.ExecuteReader());
 
-                    return resultQuery;
+                    return table;
+                }
+                catch (InvalidCastException ex)
+                {
+                    transaction.Rollback();
+                    throw new InvalidCastException($"Error when update data. Message: {ex.Message}");
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Error when deleting data. Message:{ex.Message}");
+                    transaction.Rollback();
+                    throw new Exception($"Error when update data. Message: {ex.Message}");
                 }
                 finally
                 {
@@ -122,8 +149,8 @@ namespace LibraryTop
         /// <returns>Return the number rows affecteds.</returns>
         public string Update(string query)
         {
-            using (connection = new MySqlConnection(_connectionString))
-            using (command = new MySqlCommand(query, connection))
+            using (connection = new SqlConnection(_connectionString))
+            using (command = new SqlCommand(query, connection))
             {
                 try
                 {
@@ -134,10 +161,20 @@ namespace LibraryTop
 
                     return numberRowsAffecteds.ToString();
                 }
-                catch (Exception ex)
+                catch (InvalidCastException ex)
                 {
                     transaction.Rollback();
-                    return $"Error when update data. Message:{ex.Message}";
+                    return $"Error when update data. Message: {ex.Message}";
+                }
+                catch (SqlException ex)
+                {
+                    transaction.Rollback();
+                    return $"Error when update data. Message: {ex.Message}";
+                }
+                catch (InvalidOperationException ex)
+                {
+                    transaction.Rollback();
+                    return $"Error when update data. Message: {ex.Message}";
                 }
                 finally
                 {
