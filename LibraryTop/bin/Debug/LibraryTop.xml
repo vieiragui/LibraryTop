@@ -6,81 +6,197 @@
     <members>
         <member name="T:LibraryTop.ConnectionMySqlDb">
             <summary>
-            Connect and execute operations with database MySql.
+            Conecta e executa operações com o banco de dados MySql.
             </summary>
         </member>
         <member name="M:LibraryTop.ConnectionMySqlDb.#ctor(System.String)">
             <summary>
-            Constructor. Receive with argument the connection string.
+            Construtor. Recebe como argumento a string de conexão.
             </summary>
-            <param name="connectionString">Connection string MySql.</param>
+            <param name="connectionString">String de conexão do MySql. Pode ser encontrada no site www.connectionstring.com</param>
         </member>
         <member name="M:LibraryTop.ConnectionMySqlDb.Delete(System.String)">
             <summary>
-            Execute a delete in data base.
+            Execute o comando delete no banco de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return the number rows affecteds.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas</returns>
         </member>
         <member name="M:LibraryTop.ConnectionMySqlDb.Insert(System.String)">
             <summary>
-            Execute a insert in data base.
+            Inseri dados no banco de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return the number rows affecteds.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas.</returns>
         </member>
         <member name="M:LibraryTop.ConnectionMySqlDb.Select(System.String)">
             <summary>
-            Execute a select in data base.
+            Executa um select no banco de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return a datatable.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna um DataTable</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionMySqlDb.SelectAll(System.String)">
+            <summary>
+            Executa um select retornando todas as colunas da tabela.
+            </summary>
+            <param name="nameTable">Nome da tabela onde será executado o select.</param>
+            <returns>Retorna um DataTable com todas as colunas da tabela.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionMySqlDb.SelectSomeColumns(System.String,System.String[])">
+            <summary>
+            Executa um select retornando as colunas que foram passadas como argumento.
+            </summary>
+            <param name="columns">Colunas que serão usadas para o select</param>
+            <param name="nameTable">Nome da tabela onde será executado o select.</param>
+            <returns>Retorna um DataTable com as colunas especificadas.</returns>
         </member>
         <member name="M:LibraryTop.ConnectionMySqlDb.Update(System.String)">
             <summary>
-            Execute a update in data base.
+            Executa um update na base de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return the number rows affecteds.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas.</returns>
         </member>
         <member name="T:LibraryTop.ConnectionOracleDb">
             <summary>
-            Connect and execute operations with database Oracle.
+            Conecta e executa operações com o banco de dados Oracle.
             </summary>
         </member>
         <member name="M:LibraryTop.ConnectionOracleDb.#ctor(System.String)">
             <summary>
-            Constructor. Receive with argument the connection string.
+            Construtor. Recebe como argumento a string de conexão.
             </summary>
-            <param name="connectionString">Connection string Oracle. </param>
+            <param name="connectionString">String de conexão do Oracle. Pode ser encontrada no site www.connectionstring.com</param>
         </member>
         <member name="M:LibraryTop.ConnectionOracleDb.Delete(System.String)">
             <summary>
-            Execute a delete in data base.
+            Execute o comando delete no banco de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return the number rows affecteds.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas</returns>
         </member>
         <member name="M:LibraryTop.ConnectionOracleDb.Insert(System.String)">
             <summary>
-            Execute a insert in data base.
+            Inseri dados no banco de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return the number rows affecteds.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas.</returns>
         </member>
         <member name="M:LibraryTop.ConnectionOracleDb.Select(System.String)">
             <summary>
-            Execute a select in data base.
+            Executa um select no banco de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return a datatable.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna um DataTable</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.SelectAll(System.String)">
+            <summary>
+            Executa um select retornando todas as colunas da tabela.
+            </summary>
+            <param name="nameTable">Nome da tabela onde será executado o select.</param>
+            <returns>Retorna um DataTable com todas as colunas da tabela.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionOracleDb.SelectSomeColumns(System.String,System.String[])">
+            <summary>
+            Executa um select retornando as colunas que foram passadas como argumento.
+            </summary>
+            <param name="columns">Colunas que serão usadas para o select</param>
+            <param name="nameTable">Nome da tabela onde será executado o select.</param>
+            <returns>Retorna um DataTable com as colunas especificadas.</returns>
         </member>
         <member name="M:LibraryTop.ConnectionOracleDb.Update(System.String)">
             <summary>
-            Execute a update in data base.
+            Executa um update na base de dados.
             </summary>
-            <param name="query">Query will be execute.</param>
-            <returns>Return the number rows affecteds.</returns>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas.</returns>
+        </member>
+        <member name="T:LibraryTop.ConnectionSqlServerDb">
+            <summary>
+            Conecta e executa operações com o banco de dados SqlServer.
+            </summary>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.#ctor(System.String)">
+            <summary>
+            Construtor. Recebe como argumento a string de conexão.
+            </summary>
+            <param name="connectionString">String de conexão do SqlServer. Pode ser encontrada no site www.connectionstring.com</param>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.Delete(System.String)">
+            <summary>
+            Execute o comando delete no banco de dados.
+            </summary>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.Insert(System.String)">
+            <summary>
+            Inseri dados no banco de dados.
+            </summary>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.Select(System.String)">
+            <summary>
+            Executa um select no banco de dados.
+            </summary>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna um DataTable</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.SelectAll(System.String)">
+            <summary>
+            Executa um select retornando todas as colunas da tabela.
+            </summary>
+            <param name="nameTable">Nome da tabela onde será executado o select.</param>
+            <returns>Retorna um DataTable com todas as colunas da tabela.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.SelectSomeColumns(System.String,System.String[])">
+            <summary>
+            Executa um select retornando as colunas que foram passadas como argumento.
+            </summary>
+            <param name="columns">Colunas que serão usadas para o select</param>
+            <param name="nameTable">Nome da tabela onde será executado o select.</param>
+            <returns>Retorna um DataTable com as colunas especificadas.</returns>
+        </member>
+        <member name="M:LibraryTop.ConnectionSqlServerDb.Update(System.String)">
+            <summary>
+            Executa um update na base de dados.
+            </summary>
+            <param name="query">Sql que será executado.</param>
+            <returns>Retorna o número de linhas afetadas.</returns>
+        </member>
+        <member name="T:LibraryTop.ManipulationsFiles">
+            <summary>
+            Essa classe contém métodos e funções para a manipulação de arquivos.
+            </summary>
+        </member>
+        <member name="M:LibraryTop.ManipulationsFiles.DeletaArquivo(System.String)">
+            <summary>
+            Verifica se o arquivo existe e deleta.
+            </summary>
+            <param name="arquivo">Caminho completo do arquivo.</param>
+            <example>C:\Pasta_Do_Arquivo\Nome_Do_Arquivo.pdf</example>
+            <returns>Retorna uma mensagem de confirmação de exclusão do arquivo.</returns>
+            <exception cref="T:System.Exception">Retorna uma exceção caso aconteça algum erro ao tentar excluir o arquivo.</exception>
+        </member>
+        <member name="M:LibraryTop.ManipulationsFiles.ExiteArquivo(System.String)">
+            <summary>
+            Procura por um arquivo.
+            </summary>
+            <param name="arquivo">Caminho completo do arquivo.</param>
+            <example>C:\Pasta_Do_Arquivo\Nome_Do_Arquivo.pdf</example>
+            <returns>Retorna verdadeiro caso o arquivo exista ou falso se não existir.</returns>
+            <exception cref="T:System.Exception">Retorna uma exceção caso aconteça algum erro ao tentar excluir o arquivo.</exception>
+        </member>
+        <member name="M:LibraryTop.ManipulationsFiles.LerPdf(System.String)">
+            <summary>
+            Lê um arquivo Pdf.
+            </summary>
+            <param name="pdf">Caminho completo do arquivo.</param>
+            <example>C:\Pasta_Do_Arquivo\Nome_Do_Arquivo.pdf</example>
+            <returns>Retorna uma string contendo todo o contéudo do PDF.</returns>
+            <exception cref="T:System.Exception">Retorna uma exceção caso aconteça algum erro ao tentar excluir o arquivo.</exception>
         </member>
     </members>
 </doc>

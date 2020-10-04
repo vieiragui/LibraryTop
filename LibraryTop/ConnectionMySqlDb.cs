@@ -5,7 +5,7 @@ using MySql.Data.MySqlClient;
 namespace LibraryTop
 {
     /// <summary>
-    /// Connect and execute operations with database MySql.
+    /// Conecta e executa operações com o banco de dados MySql.
     /// </summary>
     public class ConnectionMySqlDb : IDataBase
     {
@@ -15,19 +15,19 @@ namespace LibraryTop
         private MySqlTransaction transaction;
 
         /// <summary>
-        /// Constructor. Receive with argument the connection string.
+        /// Construtor. Recebe como argumento a string de conexão.
         /// </summary>
-        /// <param name="connectionString">Connection string MySql.</param>
+        /// <param name="connectionString">String de conexão do MySql. Pode ser encontrada no site www.connectionstring.com</param>
         public ConnectionMySqlDb(string connectionString)
         {
             _connectionString = connectionString;
         }
 
         /// <summary>
-        /// Execute a delete in data base.
+        /// Execute o comando delete no banco de dados.
         /// </summary>
-        /// <param name="query">Query will be execute.</param>
-        /// <returns>Return the number rows affecteds.</returns>
+        /// <param name="query">Sql que será executado.</param>
+        /// <returns>Retorna o número de linhas afetadas</returns>
         public string Delete(string query)
         {
             using (connection = new MySqlConnection(_connectionString))
@@ -55,10 +55,10 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Execute a insert in data base.
+        /// Inseri dados no banco de dados.
         /// </summary>
-        /// <param name="query">Query will be execute.</param>
-        /// <returns>Return the number rows affecteds.</returns>
+        /// <param name="query">Sql que será executado.</param>
+        /// <returns>Retorna o número de linhas afetadas.</returns>
         public string Insert(string query)
         {
             using (connection = new MySqlConnection(_connectionString))
@@ -86,10 +86,10 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Execute a select in data base.
+        /// Executa um select no banco de dados.
         /// </summary>
-        /// <param name="query">Query will be execute.</param>
-        /// <returns>Return a datatable.</returns>
+        /// <param name="query">Sql que será executado.</param>
+        /// <returns>Retorna um DataTable</returns>
         public DataTable Select(string query)
         {
             DataTable resultQuery = new DataTable();
@@ -116,10 +116,74 @@ namespace LibraryTop
         }
 
         /// <summary>
-        /// Execute a update in data base.
+        /// Executa um select retornando todas as colunas da tabela.
         /// </summary>
-        /// <param name="query">Query will be execute.</param>
-        /// <returns>Return the number rows affecteds.</returns>
+        /// <param name="nameTable">Nome da tabela onde será executado o select.</param>
+        /// <returns>Retorna um DataTable com todas as colunas da tabela.</returns>
+        public DataTable SelectAll(string nameTable)
+        {
+            string query = $"select * from {nameTable}";
+            DataTable resultQuery = new DataTable();
+            using (connection = new MySqlConnection(_connectionString))
+            using (command = new MySqlCommand(query, connection))
+            {
+                try
+                {
+                    connection.Open();
+                    connection.BeginTransaction();
+                    resultQuery.Load(command.ExecuteReader());
+
+                    return resultQuery;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Error when deleting data. Message:{ex.Message}");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Executa um select retornando as colunas que foram passadas como argumento.
+        /// </summary>
+        /// <param name="columns">Colunas que serão usadas para o select</param>
+        /// <param name="nameTable">Nome da tabela onde será executado o select.</param>
+        /// <returns>Retorna um DataTable com as colunas especificadas.</returns>
+        public DataTable SelectSomeColumns(string nameTable, params string[] columns)
+        {
+            string joinColumns = string.Join(",", columns);
+            string query = $"select {joinColumns} from {nameTable}";
+            DataTable resultQuery = new DataTable();
+            using (connection = new MySqlConnection(_connectionString))
+            using (command = new MySqlCommand(query, connection))
+            {
+                try
+                {
+                    connection.Open();
+                    connection.BeginTransaction();
+                    resultQuery.Load(command.ExecuteReader());
+
+                    return resultQuery;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception($"Error when deleting data. Message:{ex.Message}");
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Executa um update na base de dados.
+        /// </summary>
+        /// <param name="query">Sql que será executado.</param>
+        /// <returns>Retorna o número de linhas afetadas.</returns>
         public string Update(string query)
         {
             using (connection = new MySqlConnection(_connectionString))

@@ -31,3 +31,5 @@ C:\Projetos\LibraryTop\LibraryTop\bin\Debug\System.Buffers.xml
 C:\Projetos\LibraryTop\LibraryTop\bin\Debug\System.Memory.xml
 C:\Projetos\LibraryTop\LibraryTop\bin\Debug\System.Numerics.Vectors.xml
 C:\Projetos\LibraryTop\LibraryTop\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\itextsharp.dll
+C:\Projetos\LibraryTop\LibraryTop\bin\Debug\itextsharp.xml
